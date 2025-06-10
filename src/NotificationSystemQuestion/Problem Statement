@@ -1,0 +1,152 @@
+Machine Coding Round: Notification System
+🔔 Problem Statement
+Design and implement a Notification System that supports sending messages to users via multiple channels (Email, SMS, Push).
+Each user can choose one or more channels.
+The system should:
+
+Allow easy addition of new channels.
+
+Log all sent messages.
+
+Be extensible to support retry and decorators in the future.
+
+Demonstrate basic functionality through a main() method.
+
+🧱 Functional Requirements
+✅ Users have a name and a list of preferred channels.
+
+✅ System must send a Notification (with a message) to the user on all their channels.
+
+✅ All messages sent must be logged (e.g., “Sending SMS to X: message”).
+
+✅ You should be able to add a new channel like Slack or WhatsApp easily.
+
+📦 Deliverables
+Functional Java code that compiles and runs
+
+Interface-based design (OOP)
+
+Logger (Singleton)
+
+Optional: Retry mechanism via Decorator
+
+main() method to simulate sending to multiple users
+
+🧠 Suggested Design (Use SOLID + Strategy)
+Entities:
+User: name, list of NotificationChannel
+
+Notification: message
+
+NotificationChannel: interface
+
+EmailChannel, SMSChannel, PushChannel: concrete classes
+
+NotificationService: sends to user
+
+Logger: Singleton
+
+✅ Apply Strategy, Singleton
+🔄 Optional: Decorator, Factory (future extensibility)
+
+🧭 Next Step:
+Would you like me to:
+
+Give you this as an assignment prompt to try for 45–60 min?
+
+Share the interview-perfect implementation directly so you study and modify?
+
+Scaffold starter files and let you fill in the logic?
+
+Let me know your preferred flow — I’ll then show how Myntra/Paytm-style prompts are system design questions, not machine coding, and explain those too.
+
+
+
+
+
+
+
+You said:
+yes first give me the assignment prompt for 60mins, then i will give u what i am thinking then we will talk on how to move forward
+
+
+ChatGPT said:
+Perfect! Here's your LLD Machine Coding Assignment Prompt for the Notification System — just like in interviews. Take ~60 minutes to design and implement it.
+
+🧪 LLD Assignment: Notification System
+⏱️ Duration: 60 minutes
+💻 Language: Java (OOP preferred, no framework needed)
+🎯 Problem Statement
+Design a Notification System that allows sending notifications to users via one or more channels: Email, SMS, and Push.
+
+📌 Functional Requirements
+Define a User who can register for multiple notification channels.
+
+Each Notification contains a message.
+
+The system must:
+
+Send a message to all enabled channels for a user.
+
+Log all notification events (using a Logger).
+
+You should be able to add a new channel (e.g., Slack) with no modification to existing code.
+
+Demonstrate your code via a main() method where:
+
+At least 2 users are created.
+
+Each user has different channel preferences.
+
+A notification is sent to each user.
+
+Output should print each message sent and a corresponding log.
+
+🔐 Constraints
+Avoid if-else or switch for channel logic.
+
+Follow SOLID principles where applicable.
+
+Use design patterns like Strategy, Singleton.
+
+Bonus: Support future enhancement for logging, retry, filtering via Decorator pattern.
+
+🔧 Example Output:
+vbnet
+Copy
+Edit
+[LOG] Sending Email to Alice: Hello!
+Email: Hello!
+
+[LOG] Sending SMS to Bob: Hi!
+SMS: Hi!
+[LOG] Sending Push to Bob: Hi!
+Push: Hi!
+🧱 Expected Classes
+Class	Responsibility
+User	Holds name and list of preferred channels
+Notification	Holds the message text
+NotificationChannel	Interface for sending (Strategy)
+EmailChannel / SMSChannel / PushChannel	Implements sending
+NotificationService	Orchestrates sending to users (Facade-ish)
+Logger	Singleton that logs to console
+
+🚀 Deliverables
+User.java
+
+Notification.java
+
+Interface + concrete implementations
+
+NotificationService.java
+
+Logger.java (Singleton)
+
+Main.java with test simulation
+
+
+
+RESULT:
+So, in the service we can add the new class we make and overload the function of notify in that
+then in the factory we add the choice in the supplier of the notification
+which is then called in the main fn;
