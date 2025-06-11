@@ -2,12 +2,16 @@ package NotificationSystemQuestion;
 
 public class NotificationService {
     Notification notif;
-    public NotificationService(Notification type){
-        this.notif=type;
+    public NotificationService(User x){
+        for(String type:x.PreferredChannels){
+            Notification n=NotificationFactory.getnotifier(type);
+            Notification loggernotifier=new LoggingDecorator(n);
+            loggernotifier.message("hello from decorated "+ type);
+
+
+        }
 
     }
-    public void notify(String message){
-        notif.message(message);
-    }
+
 
 }
